@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
+import Nav from './components/nav';
+import Header from './components/header';
+import Goods from './components/goods';
 import './App.css';
+
+const List = [
+  {
+    url: '/home',
+    text: '主页面'
+  },{
+    url: '/Goods',
+    text: '商品页'
+  }
+];
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="nav-list">
+        <Nav list={List}/>
+      </div>
+      <div className="main">
+        <Route path='/home' component={Header} />
+        <Route path='/goods' component={Goods} />
+      </div>
     </div>
   );
 }
